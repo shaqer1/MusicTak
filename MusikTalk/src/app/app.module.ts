@@ -4,6 +4,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { AppComponent } from './app.component';
+import { SearchpageComponent } from './searchpage/searchpage.component';
+import { SongdetailpageComponent } from './songdetailpage/songdetailpage.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyA_nU_3UBcDX7PV5oLzxoJuyggNoPPtjHA",
@@ -17,7 +19,9 @@ var firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchpageComponent,
+    SongdetailpageComponent
   ],
   imports: [
     BrowserModule,
