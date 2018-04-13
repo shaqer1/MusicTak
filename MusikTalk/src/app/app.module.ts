@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { SearchpageComponent } from './searchpage/searchpage.component';
 import { SongdetailpageComponent } from './songdetailpage/songdetailpage.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { MusicinfocomponentComponent } from './songdetailpage/musicinfocomponent/musicinfocomponent.component';
+import { SpotifyWidgetComponent } from './songdetailpage/musicinfocomponent/spotify-widget/spotify-widget.component';
+import { SongLinksComponent } from './songdetailpage/musicinfocomponent/song-links/song-links.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyA_nU_3UBcDX7PV5oLzxoJuyggNoPPtjHA",
@@ -22,7 +25,10 @@ var firebaseConfig = {
   declarations: [
     AppComponent,
     SearchpageComponent,
-    SongdetailpageComponent
+    SongdetailpageComponent,
+    MusicinfocomponentComponent,
+    SpotifyWidgetComponent,
+    SongLinksComponent
   ],
   imports: [
     BrowserModule,
