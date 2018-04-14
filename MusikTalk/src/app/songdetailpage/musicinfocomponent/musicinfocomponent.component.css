@@ -3,12 +3,12 @@
   color: white;
 }
 .musicinfocomponent {
-  margin: 0 0 2em 0;
-  list-style-type: none;
-  padding: 0;
   width: auto;
+  height: 200px;
+  position:relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
   background-color: #9e9c9c;
-  
 }
 .musicinfocomponenet li {
   cursor: pointer;
@@ -28,8 +28,5 @@
   color: #607D8B;
   background-color: #DDD;
   left: .1em;
-}
-.componenets iframe{
-  width: 100%;
 }
 
