@@ -1,0 +1,14 @@
+body{
+  text-align: center;
+}
+h1 {
+  text-align: center;
+  border-radius: 25px;
+  padding: 20px;
+  position: relative;
+  background: #84bd00;
+  background-size: 101%;
+  color: #ff0000;
+  font-size: 250%;
+  line-height: 1.25em;
+}

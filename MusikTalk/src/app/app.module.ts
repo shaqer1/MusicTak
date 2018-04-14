@@ -8,6 +8,11 @@ import { SearchpageComponent } from './searchpage/searchpage.component';
 import { SongdetailpageComponent } from './songdetailpage/songdetailpage.component';
 import { AppRoutingModule } from './/app-routing.module';
 
+import { CommentsCompComponent } from './comments-comp/comments-comp.component';
+import { CommentServiceService } from './comment-service.service'
+
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+
 var firebaseConfig = {
   apiKey: "AIzaSyA_nU_3UBcDX7PV5oLzxoJuyggNoPPtjHA",
   authDomain: "musiktalk-6b659.firebaseapp.com",
@@ -22,14 +27,18 @@ var firebaseConfig = {
   declarations: [
     AppComponent,
     SearchpageComponent,
-    SongdetailpageComponent
+    SongdetailpageComponent,
+    CommentsCompComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),  // Add this
-    AngularFirestoreModule, AppRoutingModule  
+    AngularFirestoreModule, AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    CommentServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

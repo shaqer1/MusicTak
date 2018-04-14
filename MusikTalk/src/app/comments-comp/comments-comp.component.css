@@ -1,0 +1,54 @@
+.comments-comp {
+  border-radius: 25px;
+  padding: 20px;
+  background-color: #84bd00;
+  text-align:center;
+  display: inline-block;
+}
+.comments-comp h2 {
+  text-align: center;
+  border-radius: 25px;
+  padding: 20px;
+  position: relative;
+  background: #0d2c40;
+  background-size: 101%;
+  color: #ffffff;
+  font-size: 250%;
+  line-height: 1.25em;
+}
+.comments-comp ul {
+  display: inline-block;
+  border-radius: 25px;
+  padding: 30px;
+  text-align: left;
+  display: block;
+  position: relative;
+  background: #0d2c40;
+  background-size: 101%;
+  color: #ffffff;
+  box-sizing: border-box;
+}
+.comments-comp ul:hover {
+  background-color: #FF0000;
+}
+.comments-comp .labels{
+  display: inline-block;
+  border-radius: 25px;
+  padding: 30px;
+  color: #ffffff;
+  background: #0d2c60;
+}
+
+.comments-comp input{
+  display: inline-block;
+  border-radius: 25px;
+  padding: 30px;
+  color: #ffffff;
+  background: #000;
+}
+.comments-comp button{
+  position: relative;
+  border-radius: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+}
