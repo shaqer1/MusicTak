@@ -11,13 +11,20 @@ export class CommentServiceService {
   comments: Observable<Comment[]>;
 
   sendComment(c: Comment, s: Song) {
-    console.log('sending comment!!!')
+    //TODO: check if empty strings.
+    if(!c.comment || !c.username){
+      return;
+    }
+    console.log('sending comment!!!');
     this.afs.collection('Comments')
-      .add({'comment': c.comment, 'song': {'songName': c.song.songName, 'songId': c.song.songId}, 'username': c.username});
+      .add({'comment': c.comment, 'song':
+      {'songName': c.song.songName, 'songId': c.song.songId}
+      , 'username': c.username});
   }
 
   getComments(c: Comment): Observable<Comment[]> {
-    this.commentsCol = this.afs.collection('Comments', ref => ref.where('song.songName', '==', c.song.songName));
+    this.commentsCol = this.afs.collection('Comments'
+    ,ref => ref.where('song.songId', '==', c.song.songId));
     this.comments = this.commentsCol.valueChanges();
     console.log(this.comments);
     return this.comments;

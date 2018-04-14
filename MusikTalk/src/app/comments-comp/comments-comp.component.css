@@ -13,36 +13,36 @@
   background: #0d2c40;
   background-size: 101%;
   color: #ffffff;
-  font-size: 250%;
-  line-height: 1.25em;
+  font-size: 150%;
 }
 .comments-comp ul {
   display: inline-block;
   border-radius: 25px;
-  padding: 30px;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
   text-align: left;
   display: block;
   position: relative;
   background: #0d2c40;
   background-size: 101%;
   color: #ffffff;
-  box-sizing: border-box;
 }
 .comments-comp ul:hover {
   background-color: #FF0000;
 }
 .comments-comp .labels{
   display: inline-block;
-  border-radius: 25px;
-  padding: 30px;
+  border-radius: 20px;
+  padding: 10px;
   color: #ffffff;
   background: #0d2c60;
 }
 
 .comments-comp input{
   display: inline-block;
-  border-radius: 25px;
-  padding: 30px;
+  border-radius: 20px;
+  padding: 10px;
   color: #ffffff;
   background: #000;
 }

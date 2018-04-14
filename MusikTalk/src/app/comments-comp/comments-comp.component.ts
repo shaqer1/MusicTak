@@ -17,7 +17,7 @@ export class CommentsCompComponent implements OnInit {
     username: '',
     comment: '',
     song: {
-      songName: '"I don\'t know you" by The Marias',
+      songName: '"Basta Ya" by The Marias',
       songId: 1
     }
   }

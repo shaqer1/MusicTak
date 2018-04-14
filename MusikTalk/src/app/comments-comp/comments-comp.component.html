@@ -2,14 +2,14 @@
 <div class="comments-comp">
 
   <h2>{{ comment.song.songName }} <br /> Comments below!</h2>
+  <div *ngIf="(cs.comments | async)?.length==0"><div class="labels">No comments found :( </div><br /><br /></div>
     <ul *ngFor="let comment of comments">
       <li>
         <strong>{{ comment.username}}</strong>
         <br>
-        {{comment.comment}} 
+        {{comment.comment}}
       </li>
     </ul>
-
   <div>
 
     <div class="labels" >
