@@ -1,7 +1,9 @@
 import { Song } from './Song';
 
 export class Comment {
-  username: string;
-  comment: string;
-  song: Song;
+  down_votes: number;
+  up_votes: number;
+  message: string;
+  owner_name: string;
+  post_time: number;
 }

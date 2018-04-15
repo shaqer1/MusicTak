@@ -1,24 +1,24 @@
-
+<!--{{ comment.song.songName }} <br />--->
 <div class="comments-comp">
 
-  <h2>{{ comment.song.songName }} <br /> Comments below!</h2>
+  <h2>Comments below!</h2>
   <div *ngIf="(cs.comments | async)?.length==0"><div class="labels">No comments found :( </div><br /><br /></div>
     <ul *ngFor="let comment of comments">
       <li>
-        <strong>{{ comment.username}}</strong>
+        <strong>{{ comment.owner_name}}</strong>
         <br>
-        {{comment.comment}}
+        {{comment.message}}
       </li>
     </ul>
   <div>
 
     <div class="labels" >
         <label>Username:
-          <input [(ngModel)]="comment.username" placeholder="Enter your name..." class="comments-comp">
+          <input [(ngModel)]="comment.owner_name" placeholder="Enter your name..." class="comments-comp">
         </label>
         <br />
         <label>Comment:
-          <input [(ngModel)]="comment.comment" placeholder="Enter your comment.." class="comments-comp">
+          <input [(ngModel)]="comment.message" placeholder="Enter your comment.." class="comments-comp">
         </label>
     </div>
 
