@@ -1,1 +1,8 @@
-<app-musicinfocomponent></app-musicinfocomponent>
+<div *ngIf="id != null">
+  <h2>{{song.songName}}</h2>
+  <button (click)="goBack()">go back from {{id}}</button>
+  <app-musicinfocomponent [id]="id"></app-musicinfocomponent>
+</div>
+<div *ngIf="id == null">
+  <h2>No ID</h2>
+</div>

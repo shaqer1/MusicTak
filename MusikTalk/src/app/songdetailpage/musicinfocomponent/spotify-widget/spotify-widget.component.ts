@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-spotify-widget',
@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./spotify-widget.component.css']
 })
 export class SpotifyWidgetComponent implements OnInit {
+ 
+  @Input() albumName:string;
+  @Input() imageURL:string;
+  @Input() artist:string;
+  @Input() songName:string;
 
   constructor() { }
 

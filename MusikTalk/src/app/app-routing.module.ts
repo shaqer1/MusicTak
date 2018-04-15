@@ -13,7 +13,7 @@ const routes: Routes = [
     component: SearchpageComponent
   },
   {
-    path: 'song',
+    path: 'song/:id',
     component: SongdetailpageComponent
   },
   {

@@ -10,6 +10,8 @@ import { AppRoutingModule } from './/app-routing.module';
 import { MusicinfocomponentComponent } from './songdetailpage/musicinfocomponent/musicinfocomponent.component';
 import { SpotifyWidgetComponent } from './songdetailpage/musicinfocomponent/spotify-widget/spotify-widget.component';
 import { SongLinksComponent } from './songdetailpage/musicinfocomponent/song-links/song-links.component';
+import { SongRetrievalService } from './song-retrieval.service';
+
 
 var firebaseConfig = {
   apiKey: "AIzaSyA_nU_3UBcDX7PV5oLzxoJuyggNoPPtjHA",
@@ -35,7 +37,7 @@ var firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),  // Add this
     AngularFirestoreModule, AppRoutingModule  
   ],
-  providers: [],
+  providers: [SongRetrievalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

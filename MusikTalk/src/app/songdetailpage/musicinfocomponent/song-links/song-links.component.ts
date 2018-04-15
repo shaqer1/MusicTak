@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-song-links',
@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./song-links.component.css']
 })
 export class SongLinksComponent implements OnInit {
-
+  @Input() yLink:string;
+  @Input() iLink:string;
+  @Input() sLink:string;
   constructor() { }
 
   ngOnInit() {
