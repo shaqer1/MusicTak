@@ -1,0 +1,32 @@
+.selected {
+  background-color: #CFD8DC !important;
+  color: white;
+}
+.musicinfocomponent {
+  width: auto;
+  height: 200px;
+  position:relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #9e9c9c;
+}
+.musicinfocomponenet li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+}
+.musicinfocomponent li.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+.musicinfocomponent li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+

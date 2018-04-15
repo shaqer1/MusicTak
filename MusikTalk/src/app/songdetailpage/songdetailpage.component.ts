@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { SongRetrievalService } from '../song-retrieval.service'
+import { Song } from '../Song';
 
 
 @Component({
@@ -8,9 +12,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SongdetailpageComponent implements OnInit {
 
-  constructor() { }
+  public id:string;
+  song:Song;
 
-  ngOnInit() {
+  constructor(
+    private route: ActivatedRoute,
+    private location: Location,
+    private sr: SongRetrievalService
+  ) { }
+
+  ngOnInit(): void {
+    this.getChatID();
   }
-
+ 
+  getChatID(): void {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.sr.getSong(this.id)
+      .subscribe(song => this.song = song);
+  }
+ 
+  goBack(): void {
+    this.location.back();
+  }
 }

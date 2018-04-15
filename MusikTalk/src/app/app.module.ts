@@ -7,6 +7,11 @@ import { AppComponent } from './app.component';
 import { SearchpageComponent } from './searchpage/searchpage.component';
 import { SongdetailpageComponent } from './songdetailpage/songdetailpage.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { MusicinfocomponentComponent } from './songdetailpage/musicinfocomponent/musicinfocomponent.component';
+import { SpotifyWidgetComponent } from './songdetailpage/musicinfocomponent/spotify-widget/spotify-widget.component';
+import { SongLinksComponent } from './songdetailpage/musicinfocomponent/song-links/song-links.component';
+import { SongRetrievalService } from './song-retrieval.service';
+
 
 import { CommentsCompComponent } from './comments-comp/comments-comp.component';
 import { CommentServiceService } from './comment-service.service'
@@ -28,7 +33,11 @@ var firebaseConfig = {
     AppComponent,
     SearchpageComponent,
     SongdetailpageComponent,
+    MusicinfocomponentComponent,
+    SpotifyWidgetComponent,
+    SongLinksComponent,
     CommentsCompComponent
+
   ],
   imports: [
     BrowserModule,
@@ -37,7 +46,8 @@ var firebaseConfig = {
     FormsModule
   ],
   providers: [
-    CommentServiceService
+    CommentServiceService,
+    SongRetrievalService
   ],
   bootstrap: [AppComponent]
 })
