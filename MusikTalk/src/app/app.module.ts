@@ -13,6 +13,11 @@ import { SongLinksComponent } from './songdetailpage/musicinfocomponent/song-lin
 import { SongRetrievalService } from './song-retrieval.service';
 
 
+import { CommentsCompComponent } from './comments-comp/comments-comp.component';
+import { CommentServiceService } from './comment-service.service'
+
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+
 var firebaseConfig = {
   apiKey: "AIzaSyA_nU_3UBcDX7PV5oLzxoJuyggNoPPtjHA",
   authDomain: "musiktalk-6b659.firebaseapp.com",
@@ -30,14 +35,20 @@ var firebaseConfig = {
     SongdetailpageComponent,
     MusicinfocomponentComponent,
     SpotifyWidgetComponent,
-    SongLinksComponent
+    SongLinksComponent,
+    CommentsCompComponent
+
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),  // Add this
-    AngularFirestoreModule, AppRoutingModule  
+    AngularFirestoreModule, AppRoutingModule,
+    FormsModule
   ],
-  providers: [SongRetrievalService],
+  providers: [
+    CommentServiceService,
+    SongRetrievalService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

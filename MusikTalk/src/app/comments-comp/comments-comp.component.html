@@ -1,0 +1,33 @@
+<!--{{ comment.song.songName }} <br />--->
+<div class="comments-comp">
+
+  <h2>Comments below!</h2>
+  <div *ngIf="(cs.comments | async)?.length==0"><div class="labels">No comments found :( </div><br /><br /></div>
+    <ul *ngFor="let comment of comments">
+      <li>
+        <strong>{{ comment.owner_name}}</strong>
+        <br>
+        {{comment.message}}
+      </li>
+    </ul>
+  <div>
+
+    <div class="labels" >
+        <label>Username:
+          <input [(ngModel)]="comment.owner_name" placeholder="Enter your name..." class="comments-comp">
+        </label>
+        <br />
+        <label>Comment:
+          <input [(ngModel)]="comment.message" placeholder="Enter your comment.." class="comments-comp">
+        </label>
+    </div>
+
+    <div>
+      <button class="button"
+            (click)="cs.sendComment(comment, songObj)">Submit!</button>
+    </div>
+
+  </div>
+
+</div>
+<!--commentService.sendComment(songObj, comment)-->
