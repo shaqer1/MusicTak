@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Song } from '../../song';
+import { Song } from '../../Song';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { Song } from '../../song';
 })
 export class MusicinfocomponentComponent implements OnInit {
   title = 'this is going to look so fucking cool Shafay!!!!';
-  @Input() id:string;  
+  @Input() id:string;
 
 
   constructor() { }
