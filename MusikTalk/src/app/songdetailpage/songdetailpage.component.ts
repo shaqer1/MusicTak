@@ -12,8 +12,8 @@ import { Song } from '../Song';
 })
 export class SongdetailpageComponent implements OnInit {
 
-  public id:string;
-  song:Song;
+  id: string;
+  song: Song;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,13 +24,13 @@ export class SongdetailpageComponent implements OnInit {
   ngOnInit(): void {
     this.getChatID();
   }
- 
+
   getChatID(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.sr.getSong(this.id)
       .subscribe(song => this.song = song);
   }
- 
+
   goBack(): void {
     this.location.back();
   }

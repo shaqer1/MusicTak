@@ -30,6 +30,7 @@ export class CommentsCompComponent implements OnInit {
   getComments(): void {
     this.cs.getComments(this.songId)
       .subscribe(comments => this.comments = comments);
+      //console.log(this.comments);
   }
 
   ngOnInit() {
