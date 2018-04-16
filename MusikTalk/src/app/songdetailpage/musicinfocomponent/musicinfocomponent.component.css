@@ -9,3 +9,6 @@
   background-color: #9e9c9c;
   display: inline-block;
 }
+.container {
+    margin: 20px;
+}
