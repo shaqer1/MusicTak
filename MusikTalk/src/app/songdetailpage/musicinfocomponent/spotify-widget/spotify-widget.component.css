@@ -1,8 +1,7 @@
 .spotify-widget {
-  height: 90%;
-  width: auto;
   background-color:powderblue;
-  position:absolute;
-  top:5%;
-  left:5%;
+  border-radius: 25px;
+  padding: 20px;
+  text-align:center;
+  display: inline-block;
 }
