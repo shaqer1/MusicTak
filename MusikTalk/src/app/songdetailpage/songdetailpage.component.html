@@ -1,8 +1,8 @@
- <div *ngIf="song != null">
+ <div *ngIf="song != null" >
   <h2>{{(sr.song | async)?.name}}</h2><!---{{song.songName}}--->
-  <button (click)="goBack()">go back from {{id}}</button>
   <app-musicinfocomponent [song]="song"></app-musicinfocomponent>
   <app-comments-comp></app-comments-comp>
+  <button (click)="goBack()">go back from {{id}}</button>
 </div>
 <div *ngIf="song == null">
   <h2>No ID</h2>

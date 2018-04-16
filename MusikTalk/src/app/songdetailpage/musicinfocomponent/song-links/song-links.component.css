@@ -1,9 +1,8 @@
 .song-links {
   border-radius: 25px;
   padding: 20px;
-  text-align:center;
-  display: inline-block;
   background-color:blueviolet;
+  float: left;
 }
 a.youtubeButton{
   border-radius: 12px;

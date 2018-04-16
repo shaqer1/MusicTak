@@ -22,7 +22,7 @@ export class CommentsCompComponent implements OnInit {
     post_time: 0
   }
 
-  constructor(private cs: CommentServiceService) {
+  constructor(public cs: CommentServiceService) {
     this.songId = 'TVLn9lppXyus887n10Rv';
     this.getComments();
   }

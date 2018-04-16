@@ -3,10 +3,9 @@
   color: white;
 }
 .musicinfocomponent {
-  width: 100%;
-  height: auto;
+  text-align: center;
   /* padding-top: 10px;
   padding-bottom: 10px; */
   background-color: #9e9c9c;
-  text-align: center;
+  display: inline-block;
 }

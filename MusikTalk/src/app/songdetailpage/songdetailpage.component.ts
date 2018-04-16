@@ -13,7 +13,7 @@ import { Song } from '../Song';
 export class SongdetailpageComponent implements OnInit {
 
   public id:string;
-  song:Song;
+  song: Song;
   // song:Song = {
   //   itunesLink: 'https://itunes.apple.com/us/album/colors-of-the-wind/191902361?i=191902417&uo=4',
   //   name: 'Colors of the wind',

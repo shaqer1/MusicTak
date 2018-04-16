@@ -3,7 +3,7 @@
   padding: 20px;
   background-color: #84bd00;
   text-align:center;
-  display: inline-block;
+  display: block;
 }
 .comments-comp h2 {
   text-align: center;
