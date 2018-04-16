@@ -1,12 +1,9 @@
 export class Song {
-  songName:string;
-  songId:number;
-  imageURL:string;
-  yLink:string;
-  iLink:string;
-  sLink:string;
-  sID:string;
-  
-
+  itunesLink:string;
+  name:string;
+  songID:string;
+  spotifyID:string;
+  spotifyLink:string;
+  youtubeLink:string;
 
 }

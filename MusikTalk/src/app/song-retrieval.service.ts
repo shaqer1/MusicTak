@@ -9,35 +9,6 @@ export class SongRetrievalService {
   songColl: AngularFirestoreCollection<Song>;
   songs: Observable<Song[]>;
 
-  addSong(s: Song) {
-    //TODO: check if empty strings.
-    //if(!c.comment || !c.username){
-    //  return;
-    //}
-    console.log('sending song chat!!!');
-    this.afs.collection('songs')
-      .add({'name': s.songName, 'spotifyID':s.sID,'itunesLink':s.iLink,'youtubeLink':s.yLink,'spotifyLink':s.sLink,'imageURL':s.imageURL, 'songId':s.songId});
-  }
-
-  getSongs(id:string) :Observable<Song> {
-    console.log(id);
-    this.songColl = this.afs.collection('songs'
-    ,ref => ref.where('songID', '==', id));
-    this.songs = this.songColl.valueChanges();
-    console.log("HEllo");
-    console.log(this.songs);
-    console.log("Bye");
-    return this.songs[0];
-
-  }
-  getSong(id:string) : Observable<Song> {
-    console.log(id);
-    var postDoc = this.afs.doc('songs/'+id);
-    var post = postDoc.valueChanges();
-    console.log(post);
-    return null;
-
-  }
 
   constructor(private afs: AngularFirestore) { }
 
