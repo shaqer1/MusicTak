@@ -6,9 +6,38 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class SongRetrievalService {
 
-  songColl: AngularFirestoreCollection<Song>;
-  songs: Observable<Song[]>;
+  songCol: AngularFirestoreCollection<Song>;
+  songs: any;
+  songDoc: AngularFirestoreDocument<Song>;
+  song: Observable<Song>;
 
+  addSong(s: Song) {
+    //TODO: check if empty strings.
+    //if(!c.comment || !c.username){
+    //  return;
+    //}
+    console.log('sending song chat!!!');
+    this.afs.collection('songs')
+      .add({'name': s.name, 'spotifyID':s.spotifyID,'itunesLink':s.itunesLink,'youtubeLink':s.youtubeLink,'spotifyLink':s.spotifyLink, 'songId':s.songID});
+  }
+
+  getSong(id: string) : Observable<Song> {
+    console.log(id);
+    /*this.songCol = this.afs.collection('songs');
+    this.songs = this.songCol.snapshotChanges()
+      .map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as Song;
+          const id = a.payload.doc.id;
+          return { id, data };
+        });
+      });*/
+    this.songDoc = this.afs.collection('songs').doc(id);
+    this.song = this.songDoc.valueChanges();
+    console.log(this.song);
+    return this.song;
+
+  }
 
   constructor(private afs: AngularFirestore) { }
 
