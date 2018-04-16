@@ -16,7 +16,7 @@ export class SongRetrievalService {
     //}
     console.log('sending song chat!!!');
     this.afs.collection('songs')
-      .add({'name': s.songName, 'spotifyID':s.sID,'itunesLink':s.iLink,'youtubeLink':s.yLink,'spotifyLink':s.sLink,'imageURL':s.imageURL, 'songId':s.songId});
+      .add({'name': s.name, 'spotifyID':s.spotifyID,'itunesLink':s.itunesLink,'youtubeLink':s.youtubeLink,'spotifyLink':s.spotifyLink, 'songId':s.songID});
   }
 
   getSongs(id:string) :Observable<Song> {
