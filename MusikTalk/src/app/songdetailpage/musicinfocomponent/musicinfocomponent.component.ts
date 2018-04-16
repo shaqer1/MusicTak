@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Song } from '../../Song';
 import { SongInfo } from '../../SongInfo';
+import { SpotifyService } from '../../spotify.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class MusicinfocomponentComponent implements OnInit {
   };
 
 
-  constructor() {
+  constructor(private ss: SpotifyService) {
 
   }
 
