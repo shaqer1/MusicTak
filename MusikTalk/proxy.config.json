@@ -1,5 +1,5 @@
 {
-  "/**": {
+  "/api/token": {
     "target": {
       "host": "accounts.spotify.com",
       "protocol": "https:",
