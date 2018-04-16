@@ -11,6 +11,9 @@ import { MusicinfocomponentComponent } from './songdetailpage/musicinfocomponent
 import { SpotifyWidgetComponent } from './songdetailpage/musicinfocomponent/spotify-widget/spotify-widget.component';
 import { SongLinksComponent } from './songdetailpage/musicinfocomponent/song-links/song-links.component';
 import { SongRetrievalService } from './song-retrieval.service';
+import { SpotifyService } from './spotify.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 import { CommentsCompComponent } from './comments-comp/comments-comp.component';
@@ -43,11 +46,13 @@ var firebaseConfig = {
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),  // Add this
     AngularFirestoreModule, AppRoutingModule,
+    HttpClientModule,
     FormsModule
   ],
   providers: [
     CommentServiceService,
-    SongRetrievalService
+    SongRetrievalService,
+    SpotifyService
   ],
   bootstrap: [AppComponent]
 })

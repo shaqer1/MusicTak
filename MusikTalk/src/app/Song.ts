@@ -6,5 +6,4 @@ export class Song {
   spotifyLink:string;
   youtubeLink:string;
 
-
 }
