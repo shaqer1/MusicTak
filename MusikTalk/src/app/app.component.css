@@ -1,29 +1,50 @@
 .body {
   text-align: center;
   background: #84bd00;
-  color: #ff0000;
+  color: white;
 }
-.topnav {
-    background-color: #0d2c40;
-    overflow: hidden;
+.topnav .loginComp{
+  height: 85%;
+  float: right;
+  background-color: #f00;
+  color: white;
+  text-align: center;
+  padding: 14px 10px 0px 10px;
+  font-size: 17px;
 }
-.topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-.topnav a:hover {
+.topnav .loginComp:hover {
     background-color: #ddd;
     color: black;
 }
+.topnav {
+    background-color: #0d2c40;
+    overflow: auto;
+    height: 97px;
+}
+.topnav a {
+    background-color: #84bd00;
+    float: left;
+    color: #fff;
+    height: 85%;
+    text-align: center;
+    padding: 14px 16px 0px 10px;
+    font-size: 17px;
+}
+.topnav a:hover {
+    background-color: #84bd00;
+}
 .topnav a.active {
     background-color: #84bd00;
+    padding: 14px 16px 0px 10px;
+    height: 100%;
+    text-align: center;
     color: white;
+    font-size: 17px;
 }
 .topnav a.name {
     background-color: #f00;
-    color: white;
+    height: 85%;
+    text-align: center;
+    padding: 14px 16px 0px 10px;
+    font-size: 17px;
 }

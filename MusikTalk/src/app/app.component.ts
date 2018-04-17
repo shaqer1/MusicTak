@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
+import {Router} from '@angular/router';
 import 'rxjs/add/operator/map';
 
 
@@ -13,8 +14,11 @@ import 'rxjs/add/operator/map';
 
 export class AppComponent {
   title = "MusikTalk";
+  public location = '' ;
 
-  constructor(private afs: AngularFirestore) {}
+  constructor(private  router : Router, private afs: AngularFirestore) {
+    this.location = router.url;
+  }
 
   ngOnInit() {
 

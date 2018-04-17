@@ -1,5 +1,9 @@
 <div class="topnav">
   <a class="name">{{title}}</a>
+  <a>Search</a>
+  <div *ngIf="router.url != '/login'" class="loginComp">
+    <app-login-comp></app-login-comp>
+  </div>
 </div>
 <div class="body">
   <router-outlet></router-outlet>
