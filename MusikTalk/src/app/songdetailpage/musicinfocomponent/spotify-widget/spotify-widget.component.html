@@ -1,15 +1,26 @@
 <div class="spotify-widget">
-    <table>
+  <div *ngIf="track != null" >
+    <h2>{{track.name}}</h2>
+    <table style="width:100%;">
       <tr>
         <th>
-          <img src={{info.imageURL}} style="width:200px;height:auto;">
+          <img src={{track.album.images[0].url}} style="width:200px;height:auto;">
         </th>
-        <th>
-          <h2>{{info.songName}}</h2>
-          <h2>{{info.artist}}</h2>
-          <h2>{{info.albumName}}</h2>
-          <h2>{{info.releaseDate}}</h2>
+        <th style="text-align: center;">
+          <h2>{{track.artists[0].name}}</h2>
+          <h2>{{track.album.name}}</h2>
+          <h2>{{track.album.release_date}}</h2>
+        </th>
+        <th style="text-align: center;">
+          <a href={{song.youtubeLink}} target="_blank" class="youtubeButton">Youtube</a>
+          <a href={{song.itunesLink}} target="_blank" class="itunesButton">iTunes</a>
+          <a href={{song.spotifyLink}} target="_blank" class="spotifyButton">Spotify</a>
         </th>
       </tr>
-  </table>
+    </table>
+
+  </div>
+  <div *ngIf="track == null" >
+    <h2>LOADING</h2>
+  </div>
 </div>
