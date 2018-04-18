@@ -14,30 +14,8 @@ export class SpotifyService {
   private tokenType: string;
   artist = 'Giovanni Allevi';
 
-  constructor(private http:Http) {
-    //this.getToken().subscribe(tkr => this.tkr = tkr);
-    /*let params = ('grant_type=client_credentials');
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/x-www-form-urlencoded;',
-        'Authorization': 'Basic NDY5ZjMyZjgyZWZhNGRiZjkzNTllZGEwNzM1YzEwODQ6MWVjZTE1YWRhOGIzNDNkYjkzYzAyZGUwYjNjY2NhNmE='
-      })
-    };
-    console.log(this.header);
-    this._http.post('https://accounts.spotify.com/api/token',params,
-    httpOptions).subscribe(
-      (data:any) => {
-        console.log(data)
-      }
-    );
-    this.getToken()
-      .subscribe(() => {
-        this.searchAlbums(this.artist);
-      });*/
+  constructor(private http:Http) {}
 
-
-
-  }
   login() {
     //let authorizationTokenUrl = 'https://accounts.spotify.com/api/token';
     let authorizationTokenUrl = `/api/token`;
@@ -50,8 +28,7 @@ export class SpotifyService {
     let body = 'grant_type=client_credentials';
 
     console.log(authorizationTokenUrl);
-    return this.http.post(authorizationTokenUrl, body, options)
-      .map(data => data.json())
+    return this.http.post(authorizationTokenUrl, body, options).map(data => data.json())
       .do(token => {
         this.accessToken = token.access_token;
         this.tokenType = token.token_type;
@@ -60,19 +37,27 @@ export class SpotifyService {
 
   private getToken(){
     //console.log(this.httpOptions);
-    /*let params = ('grant_type=client_credentials');
+    let params = ('grant_type=client_credentials');
     let header = new Headers();
     header.append( 'Authorization', 'Basic  NDY5ZjMyZjgyZWZhNGRiZjkzNTllZGEwNzM1YzEwODQ6MWVjZTE1YWRhOGIzNDNkYjkzYzAyZGUwYjNjY2NhNmE=');
     header.append('Content-Type' , 'application/x-www-form-urlencoded;');
     let options = new RequestOptions({ headers: header });
     console.log(params);
-    return this._http.post('https://accounts.spotify.com/api/token', params , options)
+    return this.http.post('/api/token', params , options)
     .map(data => data.json())
     .do(token => {
       this.accessToken = token.access_token;
       this.tokenType = token.token_type;
-    }, error => console.log(error));*/
+    }, error => console.log(error));
   }
+
+  searchTrack(id:string){
+    const options = this.getOptions();
+    const path = '/v1/tracks/'+id;
+    return this.http.get(path, options)
+      .map(res => res.json());
+  }
+
   searchAlbums(title: string) {
     const options = this.getOptions();
     console.log(options);
@@ -81,6 +66,7 @@ export class SpotifyService {
       .publishLast()
       .refCount()
   }
+
 
 
 

@@ -4,8 +4,44 @@
   </div>
   <div>
     <ng-template #guest>
-      <form [formGroup]="userForm">
+      <form [formGroup]="userForm" *ngIf ="!newUser">
 
+        <label for="email">Email:
+          <input [(ngModel)]="username" placeholder="Enter your Email..." class="login-comp"
+            type="email" formControlName="email" required>
+        </label>
+
+        <label>Password:
+          <input [(ngModel)]="password" type="password" placeholder="Enter your Password.."
+          class="login-comp"
+           formControlName="password" required >
+        </label>
+
+        <button class="button" (click)="login()"  [disabled]="!userForm.valid"
+        >login!</button>
+
+
+        <button float="left" (click)="auth.googleLogin()" class="button">
+          <i class="fa fa-google"></i> Connect Google
+        </button>
+
+        <div display='block' *ngIf="formErrors.password">
+          {{ formErrors.password }}
+        </div>
+        <br />
+        <a (click)="toggleForm()"><u>Sign Up!</u></a>
+
+      </form>
+      <form  [formGroup]="signupForm" *ngIf="newUser">
+        <label for="username">Username:
+          <input placeholder="Enter your Username..." class="login-comp"
+            type="username" formControlName="displayName" required>
+        </label>
+        <label for="photoURL">photoURL:
+          <input placeholder="Enter your PhotoUrl..." class="login-comp"
+            type="photoURL" formControlName="photoURL">
+        </label>
+        <br />
         <label for="email">Email:
           <input [(ngModel)]="username" placeholder="Enter your Username..." class="login-comp"
             type="email" formControlName="email" required>
@@ -17,13 +53,8 @@
            formControlName="password" required >
         </label>
 
-
-        <br />
-
-        <button class="button" (click)="login()"  [disabled]="!userForm.valid"
-        >login!</button>
-
-        <button class="button" (click)="signup()">Sign Up!</button>
+        <button class="button" (click)="signup()"
+        >Sign Up!</button>
 
         <button float="left" (click)="auth.googleLogin()" class="button">
           <i class="fa fa-google"></i> Connect Google
@@ -32,16 +63,18 @@
         <div display='block' *ngIf="formErrors.password">
           {{ formErrors.password }}
         </div>
-        <span display='block' *ngIf="userForm.valid" >Information is valid</span>
-
+        <br />
+        <a (click)="toggleForm()"><u>Already Regitered!</u></a>
       </form>
 
     </ng-template>
     <ng-template #authenticated>
         <div *ngIf="auth.user | async as user" display="block">
-            <a>{{ user.email }}</a>
-            <img  [src]="user.photoURL" height="60px">
-            <button (click)="auth.signOut()">Logout</button>
+            <a>{{ user.displayName }}</a><br />
+            <div display="inline-block">
+              <img  [src]="user.photoURL" height="60px">
+              <button (click)="auth.signOut()" vertical-align="middle">Logout</button>
+            </div>
         </div>
     </ng-template>
   </div>

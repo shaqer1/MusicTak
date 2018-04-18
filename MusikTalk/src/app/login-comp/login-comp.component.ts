@@ -9,6 +9,8 @@ import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angula
 })
 export class LoginCompComponent {
   userForm: FormGroup;
+  signupForm: FormGroup;
+  newUser: boolean = false;
   constructor(private fb: FormBuilder, public auth: AuthService) { }
 
   ngOnInit(): void {
@@ -16,14 +18,17 @@ export class LoginCompComponent {
    }
 
    signup(): void {
-     this.auth.emailSignUp(this.userForm.value)
+     this.auth.emailSignUp(this.signupForm.value)
    }
 
    login(): void {
      console.log('here');
      this.auth.emailLogin(this.userForm.value)
    }
-   
+   toggleForm(): void {
+     this.newUser = !this.newUser;
+   }
+
 
    /*resetPassword() {
      this.auth.resetPassword(this.userForm.value['email'])
@@ -47,6 +52,29 @@ export class LoginCompComponent {
 
      this.userForm.valueChanges.subscribe(data => this.onValueChanged(data));
      this.onValueChanged(); // reset validation messages
+
+     this.signupForm = this.fb.group({
+       'displayName': ['', [
+           Validators.required
+         ]
+       ],
+       'photoURL': ['', []
+       ],
+       'email': ['', [
+           Validators.required,
+           Validators.email
+         ]
+       ],
+       'password': ['', [
+         Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
+         Validators.minLength(6),
+         Validators.maxLength(25)
+       ]
+     ],
+     });
+
+     this.signupForm.valueChanges.subscribe(data => this.onValueChanged(data));
+     this.onValueChanged();
    }
 
    // Updates validation state on form changes.

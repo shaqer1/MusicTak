@@ -15,16 +15,18 @@ export class CommentServiceService {
   formatwidth: FormatWidth;
   time: number;
 
-  sendComment(c: Comment) {
+  sendComment(c: Comment, username: string) {
     //TODO: check if empty strings.
-    if(!c.message || !c.owner_name){
+    console.log(username);
+    if(!c.message ){
+      console.log('no data');
       return;
     }
     console.log('sending comment!!!');
     this.time = (new Date()).getTime();
     //this.afs.collection('songs').add({'comment': c.comment, 'song': {'songName': c.song.songName, 'songId': c.song.songId}, 'username': c.username});
     this.afs.collection('songs').doc('TVLn9lppXyus887n10Rv').collection('messages')
-    .add({'message': c.message, 'owner_name': c.owner_name, 'post_time': this.time, 'down_votes': 0, 'up_votes': 0});
+    .add({'message': c.message, 'owner_name': username, 'post_time': this.time, 'down_votes': 0, 'up_votes': 0});
   }
 
   getComments(id: string): Observable<Comment[]> {

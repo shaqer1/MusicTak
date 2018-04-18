@@ -1,7 +1,10 @@
- <div *ngIf="song != null" >
-  <app-musicinfocomponent [song]="song"></app-musicinfocomponent>
-  <app-comments-comp></app-comments-comp>
-  <button (click)="goBack()">go back from {{id}}</button>
+<div *ngIf="song != null" >
+   <div class ='songdetail'>
+     <app-musicinfocomponent [song]="song"></app-musicinfocomponent>
+   </div>
+   <app-comments-comp></app-comments-comp>
+   <button (click)="goBack()">go back from {{id}}</button>
 </div>
 <div *ngIf="song == null">
-  <a>No ID</a>
+  <h2>No ID</h2>
+</div>

@@ -8,6 +8,9 @@ import { NotifyService } from './notify.service';
 
 import { Observable } from 'rxjs/Observable';
 import { switchMap } from 'rxjs/operators';
+import 'rxjs/add/operator/toPromise';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
 
 import { EmailPasswordCredentials } from '../EmailPasswordCredentials';
 
@@ -22,6 +25,9 @@ interface User {
 export class AuthService {
 
   user: Observable<User | null>;
+  userDB: User;
+  private pendingUser = new BehaviorSubject<string>('dsfsd');
+  name = this.pendingUser.asObservable();
 
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
@@ -83,14 +89,20 @@ export class AuthService {
   }
   email: string;
   password: string;
+  username: string;
+  photoURL: string;
 
   //// Email/Password Auth ////
   emailSignUp(credentials: EmailPasswordCredentials) {
     this.email = credentials.email;
     this.password = credentials.password;
+    this.username = credentials.displayName;
+    this.photoURL = credentials.photoURL;
+    console.log(this.username, this.photoURL);
     return this.afAuth.auth.createUserWithEmailAndPassword(this.email, this.password)
       .then((user) => {
         this.notify.update('Welcome to Firestarter!!!', 'success');
+        //TODO: update user naem etc.
         return this.updateUserData(user); // if using firestore
       })
       .catch((error) => this.handleError(error) );
@@ -98,9 +110,20 @@ export class AuthService {
 
   emailLogin(credentials: EmailPasswordCredentials) {
     return this.afAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password)
-      .then((user) => {
-        this.notify.update('Welcome to Firestarter!!!', 'success')
-        return this.updateUserData(user); // if using firestore
+      .then((user: User) => {
+        this.notify.update('Welcome to Firestarter!!!', 'success');
+        console.log('in service settting observable',user.uid);
+        this.userDB = user;
+        console.log(user.displayName);
+        const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+        userRef.valueChanges().subscribe(
+            (u: User) => {
+              console.log('in service settting observable');
+              this.pendingUser.next(u.displayName);
+            }
+          );
+          return;
+        //return this.updateUserData(user); // if using firestore
       })
       .catch((error) => this.handleError(error) );
   }
@@ -126,17 +149,42 @@ export class AuthService {
     console.error(error);
     this.notify.update(error.message, 'error');
   }
-
+  // private getUserData(user: User): void {
+  //   const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+  //    userRef.valueChanges().subscribe(
+  //     (u: User) => {
+  //       console.log('u  ',u, u.displayName, u.photoURL);
+  //       if(u.displayName){
+  //         console.log('here');
+  //         this.hasName = true;
+  //       }
+  //       if(u.photoURL){
+  //         this.hasLink = true;
+  //       }
+  //     }
+  //   );
+  // }
+  // userDB: User;
   // Sets user data to firestore after succesful login
   private updateUserData(user: User) {
 
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+    // this.afs.doc(`users/${user.uid}`).ref.get().then(function(doc) {
+    //   if (doc.exists) {
+    //       console.log("Document data:", doc.data());
+    //       this.userDB = doc.data();
+    //   } else {
+    //       console.log("No such document!");
+    //   }
+    // }).catch(function(error) {
+    //     console.log("Error getting document:", error);
+    // });
 
     const data: User = {
       uid: user.uid,
-      email: user.email || null,
-      displayName: user.displayName || 'nameless user',
-      photoURL: user.photoURL || 'https://goo.gl/Fz9nrQ',
+      email: user.email,
+      displayName: user.displayName || this.username || 'nameless user',
+      photoURL: user.photoURL || this.photoURL || 'https://goo.gl/Fz9nrQ',
     };
     return userRef.set(data);
   }
