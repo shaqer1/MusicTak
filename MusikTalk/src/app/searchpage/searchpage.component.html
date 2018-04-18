@@ -22,4 +22,7 @@
   </tr>
 </table>
 
+<ngb-pagination class="d-flex justify-content-center" [collectionSize]="70" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>
+<p>{{page}}</p>
+
 <p id="addsong">Not finding what you're looking for? <a routerLink="/add-song">Add a song!</a></p>

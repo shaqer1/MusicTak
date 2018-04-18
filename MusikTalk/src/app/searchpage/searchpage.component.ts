@@ -11,6 +11,8 @@ import { Song } from '../Song';
 export class SearchpageComponent implements OnInit {
   searchKey: string;
 
+  page = 1;
+
   songsCol: AngularFirestoreCollection<Song>;
   songs: Observable<Song[]>;
 
