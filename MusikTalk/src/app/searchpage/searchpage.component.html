@@ -1,12 +1,20 @@
-<h1>Search for a song below:</h1>
-<label>Song:
-  <input type="text" [(ngModel)]="searchKey" placeholder="Song Name">
-</label>
+<h1>Search for a song:</h1>
 
-<ul class="result-list">
-  <li *ngFor="let song of songs | async | search:'name,artist':searchKey">
-    <a routerLink="/song/{{song.songID}}">
-      {{song.artist}}: {{song.name}}
-    </a>
-  </li>
-</ul>
+<!--Search field-->
+<input type="text" [(ngModel)]="searchKey" placeholder="Song Name">
+
+<!--Line break TODO: Find out why br tag isn't working-->
+<p></p>
+
+<table class="result-list">
+  <tr>
+    <th>Artist</th>
+    <th>Title</th>
+  </tr>
+  <tr *ngFor="let song of songs | async | search:'name,artist':searchKey">
+    <td>{{song.artist}}</td>
+    <td class="song-name">{{song.name}}</td>
+  </tr>
+</table>
+
+
