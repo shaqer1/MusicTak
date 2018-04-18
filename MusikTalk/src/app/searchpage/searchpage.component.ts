@@ -14,7 +14,6 @@ export class SearchpageComponent implements OnInit {
   songsCol: AngularFirestoreCollection<Song>;
   songs: Observable<Song[]>;
 
-
   constructor(
     private afs: AngularFirestore
   ) { }
