@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 
 import { Song } from '../Song';
 
@@ -8,13 +9,36 @@ import { Song } from '../Song';
   styleUrls: ['./add-song-form.component.css']
 })
 export class AddSongFormComponent implements OnInit {
-  model = new Song("Title", "");
+  model = new Song("", "");
 
   get diagnostic() { return JSON.stringify(this.model); }
 
-  constructor() { }
+  onSubmit() {
+    // Create unique id
+    let docid = this.model.name.replace(/\ /g, '_') + '_' + this.model.artist.replace(/\ /g, '_');
+    console.log(docid);
 
-  ngOnInit() {
+    // Create the object
+    let songObj = {
+      'name': this.model.name,
+      'artist': this.model.artist,
+      'songID': docid,
+      'itunesLink': '';
+      'spotifyLink': '';
+      'youtubeLink': '';
+    }
+    if (this.model.itunesLink)
+      songObj['itunesLink'] = this.model.itunesLink;
+    if (this.model.spotifyLink)
+      songObj['spotifyLink'] = this.model.spotifyLink;
+    if (this.model.youtubeLink)
+      songObj['youtubeLink'] = this.model.youtubeLink;
+
+    this.afs.collection('songs').doc(docid).set(songObj);
   }
+
+  constructor(private afs: AngularFirestore) { }
+
+  ngOnInit() { }
 
 }

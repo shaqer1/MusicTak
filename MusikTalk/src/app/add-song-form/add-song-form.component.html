@@ -1,6 +1,6 @@
 <div>
   <h1>Add a Song</h1>
-  <form #addSongForm="ngForm">
+  <form (ngSubmit)="onSubmit()" #addSongForm="ngForm">
     <div>
       <label for="name">Title</label>
       <input type="text" id="name"
