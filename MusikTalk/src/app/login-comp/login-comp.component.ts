@@ -27,6 +27,7 @@ export class LoginCompComponent {
    }
    toggleForm(): void {
      this.newUser = !this.newUser;
+     this.buildForm();
    }
 
 
@@ -73,14 +74,29 @@ export class LoginCompComponent {
      ],
      });
 
-     this.signupForm.valueChanges.subscribe(data => this.onValueChanged(data));
-     this.onValueChanged();
+     this.signupForm.valueChanges.subscribe(data => this.onSignUpValueChanged(data));
+     this.onSignUpValueChanged();
    }
 
    // Updates validation state on form changes.
    onValueChanged(data?: any) {
-     if (!this.userForm) { return; }
+     if (!this.userForm && !this.signupForm) { return; }
      const form = this.userForm;
+     for (const field in this.formErrors) {
+       // clear previous error message (if any)
+       this.formErrors[field] = '';
+       const control = form.get(field);
+       if (control && control.dirty && !control.valid) {
+         const messages = this.validationMessages[field];
+         for (const key in control.errors) {
+           this.formErrors[field] += messages[key] + ' ';
+         }
+       }
+     }
+   }
+   onSignUpValueChanged(data?: any) {
+     if (!this.userForm && !this.signupForm) { return; }
+     const form = this.signupForm;
      for (const field in this.formErrors) {
        // clear previous error message (if any)
        this.formErrors[field] = '';

@@ -25,9 +25,9 @@ export class AddSongFormComponent implements OnInit {
       'name': this.model.name,
       'artist': this.model.artist,
       'songID': docid,
-      'itunesLink': '';
-      'spotifyLink': '';
-      'youtubeLink': '';
+      'itunesLink': '',
+      'spotifyLink': '',
+      'youtubeLink': ''
     }
     if (this.model.itunesLink)
       songObj['itunesLink'] = this.model.itunesLink;

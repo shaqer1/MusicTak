@@ -53,7 +53,7 @@ var firebaseConfig = {
     CommentsCompComponent,
     UserProfileComponent,
     LoginCompComponent,
-    SongSearchPipe
+    SongSearchPipe,
     AddSongFormComponent
   ],
   imports: [
