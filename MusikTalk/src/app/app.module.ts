@@ -21,7 +21,8 @@ import { SongSearchPipe } from './song-search.pipe';
 import { CommentsCompComponent } from './comments-comp/comments-comp.component';
 import { CommentServiceService } from './comment-service.service'
 
-import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { FormsModule } from '@angular/forms';
+import { AddSongFormComponent } from './add-song-form/add-song-form.component'; // <-- NgModel lives here
 
 var firebaseConfig = {
   apiKey: "AIzaSyA_nU_3UBcDX7PV5oLzxoJuyggNoPPtjHA",
@@ -42,7 +43,8 @@ var firebaseConfig = {
     SpotifyWidgetComponent,
     SongLinksComponent,
     CommentsCompComponent,
-    SongSearchPipe
+    SongSearchPipe,
+    AddSongFormComponent
   ],
   imports: [
     BrowserModule,

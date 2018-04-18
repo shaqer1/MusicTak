@@ -1,0 +1,20 @@
+<div>
+  <h1>Add a Song</h1>
+  <form #addSongForm="ngForm">
+    <div>
+      <label for="name">Title</label>
+      <input type="text"
+             required
+             [(ngModel)]="model.name" name="name">
+    </div>
+
+    <div>
+      <label for="artist">Artist</label>
+      <input type="text"
+             required
+             [(ngModel)]="model.artist" name="artist">
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
