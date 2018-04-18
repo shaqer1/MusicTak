@@ -14,6 +14,7 @@
   <tr *ngFor="let song of songs | async | search:'name,artist':searchKey">
     <td>{{song.artist}}</td>
     <td class="song-name">{{song.name}}</td>
+    <td><a routerLink="/song/{{song.songID}}">Comments</a></td>
   </tr>
 </table>
 
