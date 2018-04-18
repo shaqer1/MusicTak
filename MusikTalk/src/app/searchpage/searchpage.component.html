@@ -3,6 +3,10 @@
   <input type="text" [(ngModel)]="searchKey" placeholder="Song Name">
 </label>
 
-<ul *ngFor="let song of songs | async">
-  <li>{{song.name}}</li>
+<ul class="result-list">
+  <li *ngFor="let song of songs | async">
+    <a routerLink="/song/{{song.songID}}">
+      {{song.artist}}: {{song.name}}
+    </a>
+  </li>
 </ul>
