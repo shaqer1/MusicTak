@@ -36,8 +36,10 @@ export class AddSongFormComponent implements OnInit {
     if (this.model.youtubeLink)
       songObj['youtubeLink'] = this.model.youtubeLink;
 
+    // Send the doc
     this.afs.collection('songs').doc(docid).set(songObj);
 
+    // Go to new comment section
     this.router.navigate(['song', docid]);
   }
 
