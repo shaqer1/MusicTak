@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Song } from '../Song';
 
@@ -9,9 +10,8 @@ import { Song } from '../Song';
 })
 export class SearchpageComponent implements OnInit {
   searchKey: string;
-  //songs: Song[];
 
-  songsCol: AngularFirestoreCollectoin<Song>;
+  songsCol: AngularFirestoreCollection<Song>;
   songs: Observable<Song[]>;
 
 
