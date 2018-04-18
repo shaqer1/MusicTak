@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Router } from '@angular/router';
 
 import { Song } from '../Song';
 
@@ -16,6 +17,7 @@ export class AddSongFormComponent implements OnInit {
   onSubmit() {
     // Create unique id
     let docid = this.model.name.replace(/\ /g, '_') + '_' + this.model.artist.replace(/\ /g, '_');
+    docid = docid.toLowerCase();
     console.log(docid);
 
     // Create the object
@@ -35,9 +37,14 @@ export class AddSongFormComponent implements OnInit {
       songObj['youtubeLink'] = this.model.youtubeLink;
 
     this.afs.collection('songs').doc(docid).set(songObj);
+
+    this.router.navigate(['song', docid]);
   }
 
-  constructor(private afs: AngularFirestore) { }
+  constructor(
+    private afs: AngularFirestore,
+    private router: Router
+  ) { }
 
   ngOnInit() { }
 
