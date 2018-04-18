@@ -1,1 +1,8 @@
-{{test}}
+<h1>Search for a song below:</h1>
+<label>Song:
+  <input type="text" [(ngModel)]="searchKey" placeholder="Song Name">
+</label>
+
+<ul *ngFor="let song of songs | async">
+  <li>{{song.name}}</li>
+</ul>
