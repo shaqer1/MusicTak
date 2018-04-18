@@ -7,6 +7,8 @@ import { SearchpageComponent } from './searchpage/searchpage.component';
 import { SongdetailpageComponent } from './songdetailpage/songdetailpage.component';
 import { LoginCompComponent } from './login-comp/login-comp.component';
 import { AuthGuard } from './core/auth.guard';
+import { AddSongFormComponent } from './add-song-form/add-song-form.component';
+
 const routes: Routes = [
   {
     path: 'search',
@@ -16,6 +18,10 @@ const routes: Routes = [
     path: 'song/:id',
     component: SongdetailpageComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path:'add-song',
+    component: AddSongFormComponent
   },
   {
     // Default route

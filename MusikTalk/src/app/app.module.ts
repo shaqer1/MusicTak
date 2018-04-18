@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SpotifyAudioService } from './spotify-audio.service.service';
 import { HttpModule } from '@angular/http';
 
+import { AddSongFormComponent } from './add-song-form/add-song-form.component'; // <-- NgModel lives here
 
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SongSearchPipe } from './song-search.pipe';
@@ -53,6 +54,7 @@ var firebaseConfig = {
     UserProfileComponent,
     LoginCompComponent,
     SongSearchPipe
+    AddSongFormComponent
   ],
   imports: [
     BrowserModule,
