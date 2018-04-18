@@ -14,6 +14,8 @@ import { SongRetrievalService } from './song-retrieval.service';
 import { SpotifyService } from './spotify.service';
 import { HttpClientModule } from '@angular/common/http';
 
+import { SongSearchPipe } from './song-search.pipe';
+
 
 
 import { CommentsCompComponent } from './comments-comp/comments-comp.component';
@@ -39,8 +41,8 @@ var firebaseConfig = {
     MusicinfocomponentComponent,
     SpotifyWidgetComponent,
     SongLinksComponent,
-    CommentsCompComponent
-
+    CommentsCompComponent,
+    SongSearchPipe
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ var firebaseConfig = {
   providers: [
     CommentServiceService,
     SongRetrievalService,
-    SpotifyService
+    SpotifyService,
+    SongSearchPipe
   ],
   bootstrap: [AppComponent]
 })
