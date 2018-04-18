@@ -16,7 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { SpotifyAudioService } from './spotify-audio.service.service';
 import { HttpModule } from '@angular/http';
 
+
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { SongSearchPipe } from './song-search.pipe';
 
 import { CommentsCompComponent } from './comments-comp/comments-comp.component';
 import { CommentServiceService } from './comment-service.service'
@@ -49,8 +51,8 @@ var firebaseConfig = {
     SongLinksComponent,
     CommentsCompComponent,
     UserProfileComponent,
-    LoginCompComponent
-
+    LoginCompComponent,
+    SongSearchPipe
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ var firebaseConfig = {
     SpotifyService,
     SpotifyAudioService,
     NotifyService,
-    AuthGuard
+    AuthGuard,
+    SongSearchPipe
   ],
   bootstrap: [AppComponent]
 })
