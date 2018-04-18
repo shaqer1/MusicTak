@@ -28,6 +28,7 @@ export class MusicinfocomponentComponent implements OnDestroy {
 */
 
   constructor(  public spotifyAPI: SpotifyService) {
+    console.log(this.song);
       this.spotifyAPI.login()
       .subscribe(() => {
         this.searchTrack(this.song.spotifyID)

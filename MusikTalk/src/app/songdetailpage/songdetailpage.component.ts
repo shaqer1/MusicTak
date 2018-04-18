@@ -28,6 +28,7 @@ export class SongdetailpageComponent implements OnInit {
 
   getChatID(): void {
     this.id = this.route.snapshot.paramMap.get('id');
+    console.log(this.id);
     this.sr.getSong(this.id)
       .subscribe(song => this.song = song);
   }

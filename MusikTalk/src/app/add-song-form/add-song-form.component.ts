@@ -62,6 +62,28 @@ export class AddSongFormComponent implements OnInit {
     //
     // // Go to new comment section
     // this.router.navigate(['song', docid]);
+
+    // Create the object
+    let songObj = {
+      'name': this.model.name,
+      'artist': this.model.artist,
+      'songID': docid,
+      'itunesLink': '',
+      'spotifyLink': '',
+      'youtubeLink': ''
+    }
+    if (this.model.itunesLink)
+      songObj['itunesLink'] = this.model.itunesLink;
+    if (this.model.spotifyLink)
+      songObj['spotifyLink'] = this.model.spotifyLink;
+    if (this.model.youtubeLink)
+      songObj['youtubeLink'] = this.model.youtubeLink;
+
+    // Send the doc
+    this.afs.collection('songs').doc(docid).set(songObj);
+
+    // Go to new comment section
+    this.router.navigate(['song', docid]);
   }
 
   constructor(

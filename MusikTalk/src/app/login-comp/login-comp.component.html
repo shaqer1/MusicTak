@@ -7,12 +7,12 @@
       <form [formGroup]="userForm" *ngIf ="!newUser">
 
         <label for="email">Email:
-          <input [(ngModel)]="username" placeholder="Enter your Email..." class="login-comp"
+          <input placeholder="Enter your Email..." class="login-comp"
             type="email" formControlName="email" required>
         </label>
 
         <label>Password:
-          <input [(ngModel)]="password" type="password" placeholder="Enter your Password.."
+          <input type="password" placeholder="Enter your Password.."
           class="login-comp"
            formControlName="password" required >
         </label>
@@ -28,6 +28,10 @@
         <div display='block' *ngIf="formErrors.password">
           {{ formErrors.password }}
         </div>
+        <div *ngIf="formErrors.email">
+         {{ formErrors.email }}
+       </div>
+
         <br />
         <a (click)="toggleForm()"><u>Sign Up!</u></a>
 
@@ -43,27 +47,31 @@
         </label>
         <br />
         <label for="email">Email:
-          <input [(ngModel)]="username" placeholder="Enter your Username..." class="login-comp"
+          <input placeholder="Enter your Email..." class="login-comp"
             type="email" formControlName="email" required>
         </label>
 
         <label>Password:
-          <input [(ngModel)]="password" type="password" placeholder="Enter your Password.."
+          <input type="password" placeholder="Enter your Password.."
           class="login-comp"
            formControlName="password" required >
         </label>
 
-        <button class="button" (click)="signup()"
-        >Sign Up!</button>
-
-        <button float="left" (click)="auth.googleLogin()" class="button">
-          <i class="fa fa-google"></i> Connect Google
-        </button>
+        <br />
 
         <div display='block' *ngIf="formErrors.password">
           {{ formErrors.password }}
         </div>
-        <br />
+        <div display='block' *ngIf="formErrors.email">
+         {{ formErrors.email }}
+       </div>
+       <button class="button" (click)="signup()"
+       >Sign Up!</button>
+
+       <button float="left" (click)="auth.googleLogin()" class="button">
+         <i class="fa fa-google"></i> Connect Google
+       </button>
+
         <a (click)="toggleForm()"><u>Already Regitered!</u></a>
       </form>
 

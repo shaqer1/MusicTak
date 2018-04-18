@@ -1,7 +1,11 @@
 <h1>Search for a song:</h1>
 
 <!--Search field-->
-<input type="text" [(ngModel)]="searchKey" placeholder="Song Name">
+<p>
+<span class="buffer"></span><!--
+--><input type="text" class="searchbar" [(ngModel)]="searchKey" placeholder="Song Name"><!--
+--><span class="buffer"></span>
+</p>
 
 <!--Line break TODO: Find out why br tag isn't working-->
 <p></p>
@@ -18,4 +22,4 @@
   </tr>
 </table>
 
-<p>Not finding what you're looking for? <a routerLink="/add-song">Add a song!</a></p>
+<p id="addsong">Not finding what you're looking for? <a routerLink="/add-song">Add a song!</a></p>

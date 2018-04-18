@@ -16,7 +16,7 @@ export class AppComponent {
   title = "MusikTalk";
   public location = '' ;
 
-  constructor(private  router : Router, private afs: AngularFirestore) {
+  constructor(public  router : Router, private afs: AngularFirestore) {
     this.location = router.url;
   }
 

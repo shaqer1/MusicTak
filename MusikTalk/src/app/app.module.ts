@@ -57,6 +57,7 @@ var firebaseConfig = {
     SongSearchPipe,
     AddSongFormComponent,
     TrackSelectComponentComponent
+
   ],
   imports: [
     BrowserModule,
