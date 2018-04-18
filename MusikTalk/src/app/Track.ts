@@ -57,14 +57,14 @@
   }
 
   export interface Tracks {
-    href: string;
-    items: Track[];
-    limit: number;
-    next?: any;
-    offset: number;
-    previous?: any;
-    total: number;
-  }
+  href: string;
+  items: Track[];
+  limit: number;
+  next?: any;
+  offset: number;
+  previous?: any;
+  total: number;
+}
 
   export interface Album {
     album_type: string;

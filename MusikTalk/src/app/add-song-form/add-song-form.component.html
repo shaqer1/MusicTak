@@ -8,34 +8,17 @@
                          [(ngModel)]="model.name" name="name">
     </div>
 
-    <div>
-      <label for="artist">Artist</label>
-      <input type="text" id="artist"
-                         required
-                         [(ngModel)]="model.artist" name="artist">
-    </div>
-
-    <p>If you have links to the song on Itunes, Spotify, or Youtube, share them here</p>
-    <div>
-      <label for="itunes">Itunes Link</label>
-      <input type="text" id="itunes"
-                         [(ngModel)]="model.itunesLink" name="itunes">
-    </div>
-
-    <div>
-      <label for="spotify">Spotify Link</label>
-      <input type="text" id="spotify"
-                         [(ngModel)]="model.spotifyLink" name="spotify">
-    </div>
-
-    <div>
-      <label for="youtube">Youtube Link</label>
-      <input type="text" id="youtube"
-                         [(ngModel)]="model.youtubeLink" name="youtube">
-    </div>
-
     <button type="submit">Submit</button>
   </form>
+  <div *ngIf="tracks != null">
+    <div class="grid-container">
+      <app-track-select-component
+          *ngFor="let track of tracksArray"
+          [track]="track"
+          (click)="createChat(track)"></app-track-select-component>
+  </div>
+
+  </div>
 </div>
 
 <p><a routerLink="/search">Return to Search</a></p>

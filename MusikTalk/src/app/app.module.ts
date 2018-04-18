@@ -31,6 +31,7 @@ import {AuthGuard} from './core/auth.guard';
 import {NotifyService} from './core/notify.service';
 import { LoginCompComponent } from './login-comp/login-comp.component';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { TrackSelectComponentComponent } from './add-song-form/track-select-component/track-select-component.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyA_nU_3UBcDX7PV5oLzxoJuyggNoPPtjHA",
@@ -53,8 +54,9 @@ var firebaseConfig = {
     CommentsCompComponent,
     UserProfileComponent,
     LoginCompComponent,
-    SongSearchPipe
-    AddSongFormComponent
+    SongSearchPipe,
+    AddSongFormComponent,
+    TrackSelectComponentComponent
   ],
   imports: [
     BrowserModule,

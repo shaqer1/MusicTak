@@ -67,6 +67,15 @@ export class SpotifyService {
       .refCount()
   }
 
+  searchTracks(title:string){
+    const options = this.getOptions();
+    console.log('/v1/search?q='+title+'&type=track');
+    return this.http.get('/v1/search?q='+title+'&type=track',options)
+      .map(res=>res.json())
+      .publishLast()
+      .refCount()
+  }
+
 
 
 
