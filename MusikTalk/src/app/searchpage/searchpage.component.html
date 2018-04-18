@@ -4,7 +4,7 @@
 </label>
 
 <ul class="result-list">
-  <li *ngFor="let song of songs | async | search:'name':searchKey">
+  <li *ngFor="let song of songs | async | search:'name,artist':searchKey">
     <a routerLink="/song/{{song.songID}}">
       {{song.artist}}: {{song.name}}
     </a>
