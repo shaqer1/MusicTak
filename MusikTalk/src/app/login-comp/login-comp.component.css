@@ -1,0 +1,12 @@
+button{
+  position: relative;
+  border-radius: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.login-comp{
+  border-radius: 15px;
+  padding: 10px;
+  background-color: #84bd00;
+}

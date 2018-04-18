@@ -1,0 +1,25 @@
+{
+  "/v1/tracks/*": {
+    "target": {
+      "host": "api.spotify.com",
+      "protocol": "https:",
+      "port": 443
+    },
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "info"
+  },
+  "/api/token": {
+    "target": {
+      "host": "accounts.spotify.com",
+      "protocol": "https:",
+      "port": 443
+    },
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "info"
+  }
+
+
+
+}

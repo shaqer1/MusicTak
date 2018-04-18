@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SongInfo } from '../../../SongInfo';
+import { Track } from '../../../Track';
+import { Song } from '../../../Song'
 
 @Component({
   selector: 'app-spotify-widget',
@@ -9,7 +10,8 @@ import { SongInfo } from '../../../SongInfo';
 export class SpotifyWidgetComponent implements OnInit {
 
 
-  @Input() info:SongInfo;
+  @Input() track:Track;
+  @Input() song:Song;
 
   constructor() { }
 

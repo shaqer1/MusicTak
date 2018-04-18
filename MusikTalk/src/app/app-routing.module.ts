@@ -5,8 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 // Components
 import { SearchpageComponent } from './searchpage/searchpage.component';
 import { SongdetailpageComponent } from './songdetailpage/songdetailpage.component';
-
-
+import { LoginCompComponent } from './login-comp/login-comp.component';
+import { AuthGuard } from './core/auth.guard';
 const routes: Routes = [
   {
     path: 'search',
@@ -14,13 +14,19 @@ const routes: Routes = [
   },
   {
     path: 'song/:id',
-    component: SongdetailpageComponent
+    component: SongdetailpageComponent,
+    canActivate: [AuthGuard]
   },
   {
     // Default route
     path: '',
     redirectTo: '/search',
     pathMatch: 'full'
+  },
+  {
+     path: 'login',
+     component: LoginCompComponent
+     //,canActivate: [AuthGuard] for comps which require auth
   },
   {
     // Wildcard route

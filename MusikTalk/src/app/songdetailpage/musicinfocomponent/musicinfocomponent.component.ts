@@ -1,7 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnDestroy, Input } from '@angular/core';
 import { Song } from '../../Song';
 import { SongInfo } from '../../SongInfo';
+import { Track } from '../../Track';
 import { SpotifyService } from '../../spotify.service';
+import { TokenResponse } from '../../TokenResponse';
+
+import 'rxjs/Rx';
 
 
 @Component({
@@ -9,10 +13,11 @@ import { SpotifyService } from '../../spotify.service';
   templateUrl: './musicinfocomponent.component.html',
   styleUrls: ['./musicinfocomponent.component.css']
 })
-export class MusicinfocomponentComponent implements OnInit {
+export class MusicinfocomponentComponent implements OnDestroy {
   title = 'this is going to look so fucking cool Shafay!!!!';
   @Input() song:Song;
-  songInfo: SongInfo = {
+  track:Track;
+  /* = {
     songName:'Colors of the Wind',
     artist:'Disney',
     imageURL:'https://i.scdn.co/image/211350fe562cc85a07d26b5869559418b4a44e3f',
@@ -20,12 +25,28 @@ export class MusicinfocomponentComponent implements OnInit {
     albumName:'Pochahontas'
   };
 
+*/
 
-  constructor(private ss: SpotifyService) {
+  constructor(  public spotifyAPI: SpotifyService) {
+      this.spotifyAPI.login()
+      .subscribe(() => {
+        this.searchTrack(this.song.spotifyID)
+      });
 
   }
 
-  ngOnInit() {
+  searchTrack(id:string){
+    this.spotifyAPI.searchTrack(id)
+    .subscribe(res => {
+      console.log(res);
+      this.track=res;
+      //this.track = res.items[0]
+    })
+  }
+
+
+
+  ngOnDestroy() {
   }
 
 }

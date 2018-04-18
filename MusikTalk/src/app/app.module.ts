@@ -13,15 +13,23 @@ import { SongLinksComponent } from './songdetailpage/musicinfocomponent/song-lin
 import { SongRetrievalService } from './song-retrieval.service';
 import { SpotifyService } from './spotify.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SpotifyAudioService } from './spotify-audio.service.service';
+import { HttpModule } from '@angular/http';
 
+
+import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SongSearchPipe } from './song-search.pipe';
-
-
 
 import { CommentsCompComponent } from './comments-comp/comments-comp.component';
 import { CommentServiceService } from './comment-service.service'
 
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { CoreModule } from './core/core.module';
+
+import {AuthGuard} from './core/auth.guard';
+import {NotifyService} from './core/notify.service';
+import { LoginCompComponent } from './login-comp/login-comp.component';
+import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 var firebaseConfig = {
   apiKey: "AIzaSyA_nU_3UBcDX7PV5oLzxoJuyggNoPPtjHA",
@@ -42,19 +50,27 @@ var firebaseConfig = {
     SpotifyWidgetComponent,
     SongLinksComponent,
     CommentsCompComponent,
+    UserProfileComponent,
+    LoginCompComponent,
     SongSearchPipe
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),  // Add this
     AngularFirestoreModule, AppRoutingModule,
+    CoreModule,
     HttpClientModule,
-    FormsModule
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     CommentServiceService,
     SongRetrievalService,
     SpotifyService,
+    SpotifyAudioService,
+    NotifyService,
+    AuthGuard,
     SongSearchPipe
   ],
   bootstrap: [AppComponent]

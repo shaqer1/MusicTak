@@ -13,18 +13,19 @@
   <div>
 
     <div class="labels" >
-        <label>Username:
+        <!--<label>Username:
           <input [(ngModel)]="comment.owner_name" placeholder="Enter your name..." class="comments-comp">
         </label>
-        <br />
+        <br />-->
         <label>Comment:
           <input [(ngModel)]="comment.message" placeholder="Enter your comment.." class="comments-comp">
         </label>
     </div>
 
-    <div>
+    <div *ngIf="asu.user | async as user" display="block">
+      <a>{{ user.displayName }}</a>
       <button class="button"
-            (click)="cs.sendComment(comment)">Submit!</button>
+            (click)="cs.sendComment(comment, user.displayName)">Submit!</button>
     </div>
 
   </div>
