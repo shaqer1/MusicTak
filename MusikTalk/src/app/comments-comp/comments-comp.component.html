@@ -25,7 +25,7 @@
     <div *ngIf="asu.user | async as user" display="block">
       <a>{{ user.displayName }}</a>
       <button class="button"
-            (click)="cs.sendComment(comment, user.displayName)">Submit!</button>
+            (click)="cs.sendComment(comment, user.displayName, song)">Submit!</button>
     </div>
 
   </div>

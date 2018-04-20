@@ -15,7 +15,7 @@ export class CommentServiceService {
   formatwidth: FormatWidth;
   time: number;
 
-  sendComment(c: Comment, username: string) {
+  sendComment(c: Comment, username: string, song: string) {
     //TODO: check if empty strings.
     console.log(username);
     if(!c.message ){
@@ -25,7 +25,7 @@ export class CommentServiceService {
     console.log('sending comment!!!');
     this.time = (new Date()).getTime();
     //this.afs.collection('songs').add({'comment': c.comment, 'song': {'songName': c.song.songName, 'songId': c.song.songId}, 'username': c.username});
-    this.afs.collection('songs').doc('TVLn9lppXyus887n10Rv').collection('messages')
+    this.afs.collection('songs').doc(song).collection('messages')
     .add({'message': c.message, 'owner_name': username, 'post_time': this.time, 'down_votes': 0, 'up_votes': 0});
   }
 
