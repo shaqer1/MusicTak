@@ -22,16 +22,22 @@
   </tr>
 </table>
 
-<p>Num Songs: {{ numSongs }}</p>
-
 <div *ngIf="numSongs > itemsPerPage">
   <ngb-pagination class="d-flex justify-content-center"
                   [collectionSize]="numSongs"
                   [pageSize]="itemsPerPage"
                   [(page)]="page"
                   size="sm"
-                  [boundaryLinks]="true"></ngb-pagination>
-<p>{{page}}</p>
+                  [boundaryLinks]="true">
+  </ngb-pagination>
 </div>
+
+<select *ngIf="numSongs > 5"[(ngModel)]="itemsPerPage">
+  <option value="5">5</option>
+  <option *ngIf="numSongs > 10" value="10">10</option>
+  <option *ngIf="numSongs > 20" value="20">20</option>
+  <option *ngIf="numSongs > 100" value="100">100</option>
+  <option value="999999">All</option>
+</select>
 
 <p id="addsong">Not finding what you're looking for? <a routerLink="/add-song">Add a song!</a></p>
