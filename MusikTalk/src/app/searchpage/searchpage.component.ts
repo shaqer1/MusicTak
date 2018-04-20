@@ -12,6 +12,8 @@ export class SearchpageComponent implements OnInit {
   searchKey: string;
 
   page = 1;
+  itemsPerPage = 5;
+  numSongs: number;
 
   songsCol: AngularFirestoreCollection<Song>;
   songs: Observable<Song[]>;
@@ -22,11 +24,13 @@ export class SearchpageComponent implements OnInit {
 
   ngOnInit() {
     this.getSongs();
+    this.songs.subscribe(result => {
+      this.numSongs = result.length
+    });
   }
 
   getSongs(): void {
     this.songsCol = this.afs.collection('songs');
     this.songs = this.songsCol.valueChanges();
   }
-
 }

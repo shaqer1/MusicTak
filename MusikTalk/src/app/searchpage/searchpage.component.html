@@ -15,14 +15,23 @@
     <th>Artist</th>
     <th>Title</th>
   </tr>
-  <tr *ngFor="let song of songs | async | search:'name,artist':searchKey">
+  <tr *ngFor="let song of songs | async | search:'name,artist':searchKey | slice:((page-1)*itemsPerPage):(page*itemsPerPage)">
     <td>{{song.artist}}</td>
     <td class="song-name">{{song.name}}</td>
     <td><a routerLink="/song/{{song.songID}}">Comments</a></td>
   </tr>
 </table>
 
-<ngb-pagination class="d-flex justify-content-center" [collectionSize]="70" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>
+<p>Num Songs: {{ numSongs }}</p>
+
+<div *ngIf="numSongs > itemsPerPage">
+  <ngb-pagination class="d-flex justify-content-center"
+                  [collectionSize]="numSongs"
+                  [pageSize]="itemsPerPage"
+                  [(page)]="page"
+                  size="sm"
+                  [boundaryLinks]="true"></ngb-pagination>
 <p>{{page}}</p>
+</div>
 
 <p id="addsong">Not finding what you're looking for? <a routerLink="/add-song">Add a song!</a></p>
