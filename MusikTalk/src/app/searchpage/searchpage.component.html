@@ -2,13 +2,22 @@
 
 <!--Search field-->
 <p>
-<span class="buffer"></span><!--
+<span class="search-buffer"></span><!--
 --><input type="text" class="searchbar" [(ngModel)]="searchKey" placeholder="Song Name"><!--
---><span class="buffer"></span>
+--><span class="search-buffer"></span>
 </p>
 
-<!--Line break TODO: Find out why br tag isn't working-->
-<p></p>
+<p *ngIf="numSongs > 5">
+<span class="items-per-page-buffer"></span><!--
+--><select class="items-per-page-selector" [(ngModel)]="itemsPerPage">
+  <option value="5">5</option>
+  <option *ngIf="numSongs > 10" value="10">10</option>
+  <option *ngIf="numSongs > 20" value="20">20</option>
+  <option *ngIf="numSongs > 100" value="100">100</option>
+  <option value="999999">All</option>
+</select><!--
+--><span class="items-per-page-buffer"></span>
+</p>
 
 <table class="result-list">
   <tr>
@@ -22,6 +31,8 @@
   </tr>
 </table>
 
+<br>
+
 <div *ngIf="numSongs > itemsPerPage">
   <ngb-pagination class="d-flex justify-content-center"
                   [collectionSize]="numSongs"
@@ -31,13 +42,5 @@
                   [boundaryLinks]="true">
   </ngb-pagination>
 </div>
-
-<select *ngIf="numSongs > 5"[(ngModel)]="itemsPerPage">
-  <option value="5">5</option>
-  <option *ngIf="numSongs > 10" value="10">10</option>
-  <option *ngIf="numSongs > 20" value="20">20</option>
-  <option *ngIf="numSongs > 100" value="100">100</option>
-  <option value="999999">All</option>
-</select>
 
 <p id="addsong">Not finding what you're looking for? <a routerLink="/add-song">Add a song!</a></p>

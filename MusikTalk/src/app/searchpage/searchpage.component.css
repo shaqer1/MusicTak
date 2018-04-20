@@ -27,9 +27,19 @@
   text-align: center;
 }
 
-.buffer {
+.items-per-page-selector {
+  display: inline-block;
+  width: 10%;
+}
+
+.search-buffer {
   display: inline-block;
   width: 30%;
+}
+
+.items-per-page-buffer {
+  display: inline-block;
+  width: 45%;
 }
 
 #addsong {
