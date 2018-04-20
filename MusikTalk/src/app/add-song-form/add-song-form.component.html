@@ -1,15 +1,9 @@
 <div>
   <h1>Add a Song</h1>
-  <form (ngSubmit)="onSubmit()" #addSongForm="ngForm">
-    <div>
-      <label for="name">Title</label>
-      <input type="text" id="name"
-                         required
-                         [(ngModel)]="model.name" name="name">
+    <div style= "text-align: center;">
+      <input class="bar" type="text" id="name" [(ngModel)]="model.name" name="name" autocomplete="off" (input) ="onSearch(model.name)">
     </div>
 
-    <button type="submit">Submit</button>
-  </form>
   <div *ngIf="tracks != null">
     <div class="grid-container">
       <app-track-select-component

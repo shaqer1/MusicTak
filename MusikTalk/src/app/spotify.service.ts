@@ -76,6 +76,13 @@ export class SpotifyService {
       .refCount()
   }
 
+  getITunesLink(searchString:string){
+    return this.http.get('search?term='+searchString,this.getOptions())
+      .map(res=>res.json())
+      .publishLast()
+      .refCount()
+  }
+
 
 
 

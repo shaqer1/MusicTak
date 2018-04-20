@@ -4,8 +4,11 @@ import { Router } from '@angular/router';
 
 
 import { Song } from '../Song';
-import { Tracks, Track } from '../Track';
+import { Tracks, Track, ITunesRequest } from '../Track';
 import { SpotifyService } from '../spotify.service';
+import { Comment } from '../Comment'
+
+
 
 
 @Component({
@@ -23,11 +26,28 @@ export class AddSongFormComponent implements OnInit {
   tracks:Tracks;
   tracksArray:Track[];
 
+  cleanString(stri:string){
+    var str = stri.replace(" ","_");
+    str = str.replace("-","_");
+    str = str.replace("\"","");
+    str = str.replace("\'","");
+    str = str.replace("\\","");
+    str = str.replace("/","");
+    str = str.replace("(","");
+    str = str.replace(")","");
+    str = str.replace("<","");
+    str = str.replace(">","");
+    str = str.replace(":","");
+    str = str.replace(";","");
+    return str;
+  }
 
-  onSubmit() {
+onSearch() {
+  var x = (<HTMLInputElement>document.getElementById("name")).value;
+  if(x != ""){
     this.spotifyService.login()
     .subscribe(() => {
-      this.spotifyService.searchTracks(this.model.name)
+      this.spotifyService.searchTracks(x)
       .subscribe(res => {
         this.tracks = res;
         console.log(this.tracks);
@@ -35,35 +55,8 @@ export class AddSongFormComponent implements OnInit {
         console.log(this.tracksArray);
       })
     });
-    //
-    // // Create unique id
-    // let docid = this.model.name.replace(/\ /g, '_') + '_' + this.model.artist.replace(/\ /g, '_');
-    // docid = docid.toLowerCase();
-    // console.log(docid);
-    //
-    // // Create the object
-    // let songObj = {
-    //   'name': this.model.name,
-    //   'artist': this.model.artist,
-    //   'songID': docid,
-    //   'itunesLink': '',
-    //   'spotifyLink': '',
-    //   'youtubeLink': ''
-    // }
-    // if (this.model.itunesLink)
-    //   songObj['itunesLink'] = this.model.itunesLink;
-    // if (this.model.spotifyLink)
-    //   songObj['spotifyLink'] = this.model.spotifyLink;
-    // if (this.model.youtubeLink)
-    //   songObj['youtubeLink'] = this.model.youtubeLink;
-    //
-    // // Send the doc
-    // this.afs.collection('songs').doc(docid).set(songObj);
-    //
-    // // Go to new comment section
-    // this.router.navigate(['song', docid]);
-
   }
+}
 
   constructor(
     private afs: AngularFirestore,
@@ -75,23 +68,59 @@ export class AddSongFormComponent implements OnInit {
 
   createChat(track:Track){
     // Create unique id
-    let docid = track.name.replace(/\ /g, '_') + '_' + track.artists[0].name.replace(/\ /g, '_');
-    docid = docid.toLowerCase();
-    console.log(docid);
-
-    let song:Song = {
-      name:track.name,
-      artist:track.artists[0].name,
-      itunesLink:'https://www.itunes.com',
-      songID: docid,
-      spotifyID: track.id,
-      spotifyLink: track.album.external_urls.spotify,
-      youtubeLink: 'https://www.youtube.com/results?search_query='+docid.replace('_','+')
+    var nm = track.name+" "+track.artists[0].name;
+    while(nm.includes(" ")){
+      nm = nm.replace(" ","+");
     }
-    this.afs.collection('songs').doc(docid).set(song);
+    var itr:ITunesRequest;
+    this.spotifyService.getITunesLink(nm)
+      .subscribe(res =>{
+        itr = res;
+        var i;
+        for(i = 0; i < itr.resultCount; i ++){
+          if(track.album.name == itr.results[i].trackViewUrl){
+            break;
+          }
+        }
+        if(i == itr.resultCount){
+          i = 0;
+        }
+
+
+
+        let docid = this.cleanString(track.name) + '_' + this.cleanString(track.artists[0].name);
+
+        docid = docid.toLowerCase();
+        console.log(docid);
+
+        let song:Song = {
+          name:track.name,
+          artist:track.artists[0].name,
+          itunesLink:itr.results[0].trackViewUrl,
+          songID: docid,
+          spotifyID: track.id,
+          spotifyLink: track.album.external_urls.spotify,
+          youtubeLink: 'https://www.youtube.com/results?search_query='+nm
+        }
+        this.afs.collection('songs').doc(docid).set(song);
+
+        let initComment:Comment = {
+            down_votes: 0,
+            up_votes: 0,
+            message: 'Chat Created',
+            owner_name: 'UserID',
+            post_time: (new Date()).getTime()
+          }
+
+          this.afs.collection('songs').doc(docid).collection('messages').doc(docid).set(initComment);
     //
     // // Go to new comment section
-     this.router.navigate(['song', docid]);
+          this.router.navigate(['song', docid]);
+        })
   }
+
+
+
+
 
 }

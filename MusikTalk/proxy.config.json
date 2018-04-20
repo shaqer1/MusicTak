@@ -9,9 +9,29 @@
     "changeOrigin": true,
     "logLevel": "info"
   },
+  "/v1/*": {
+    "target": {
+      "host": "api.spotify.com",
+      "protocol": "https:",
+      "port": 443
+    },
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "info"
+  },
   "/api/token": {
     "target": {
       "host": "accounts.spotify.com",
+      "protocol": "https:",
+      "port": 443
+    },
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "info"
+  },
+  "/search*":{
+    "target": {
+      "host": "itunes.apple.com",
       "protocol": "https:",
       "port": 443
     },

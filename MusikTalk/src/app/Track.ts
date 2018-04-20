@@ -66,6 +66,16 @@
   total: number;
 }
 
+export interface ITunesTrack {
+  collectionName: string;
+  trackViewUrl: string;
+}
+
+export interface ITunesRequest {
+  resultCount: number;
+  results: ITunesTrack[];
+}
+
   export interface Album {
     album_type: string;
     artists: Artist[];
